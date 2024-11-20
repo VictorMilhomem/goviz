@@ -44,3 +44,10 @@ var PATTERNS = map[TokenKind]*regexp.Regexp{
 	FLOAT: regexp.MustCompile(`\d+\.\d+`),
 	ID:    regexp.MustCompile(`[a-zA-Z_][a-zA-Z0-9_]*`),
 }
+
+func NewToken(kind TokenKind, text string) Token {
+	return Token{
+		kind: kind,
+		text: text,
+	}
+}
