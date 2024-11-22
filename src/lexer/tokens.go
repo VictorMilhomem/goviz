@@ -19,7 +19,9 @@ const (
 	CLOSE_BRACE
 	OPEN_BRACKET
 	CLOSE_BRACKET
-	ARROW
+	DIRECT
+	UNDIRECT
+	EQUALS
 
 	// PUNCTS
 	SEMICOLON
@@ -75,8 +77,10 @@ func (t *Token) GetKindToText() string {
 		return "OPEN_BRACKET"
 	case CLOSE_BRACKET:
 		return "CLOSE_BRACKET"
-	case ARROW:
-		return "ARROW"
+	case DIRECT:
+		return "DIRECT"
+	case UNDIRECT:
+		return "UNDIRECT"
 	case SEMICOLON:
 		return "SEMICOLON"
 	case COMMA:
@@ -85,6 +89,8 @@ func (t *Token) GetKindToText() string {
 		return "COLON"
 	case MINUS:
 		return "MINUS"
+	case EQUALS:
+		return "EQUALS"
 	case STRICT:
 	case GRAPH:
 	case SUBGRAPH:

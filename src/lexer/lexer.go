@@ -112,12 +112,19 @@ func (l *Lexer) Tokenizer() error {
 			l.push_token(NewToken(COLON, string(current)))
 			l.advance_n(1)
 			continue
+		case '=':
+			l.push_token(NewToken(EQUALS, string(current)))
+			l.advance_n(1)
+			continue
 		case '-':
 			look := l.lookahead(1)
 			if look == '>' {
-				l.push_token(NewToken(ARROW, string(current)+string(look)))
+				l.push_token(NewToken(DIRECT, string(current)+string(look)))
 				l.advance_n(2)
 
+			} else if look == '-' {
+				l.push_token(NewToken(UNDIRECT, string(current)+string(look)))
+				l.advance_n(2)
 			} else {
 				l.push_token(NewToken(MINUS, string(current)))
 				l.advance_n(1)
